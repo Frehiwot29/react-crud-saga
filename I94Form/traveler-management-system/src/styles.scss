@@ -30,6 +30,13 @@ body {
     margin-bottom: 20px;
 }
 
+.announcement-btn.active {
+  background-color: #f97316;
+}
+
+.announcement-btn.inactive {
+  background-color: #9ca3af;
+}
 .form-group {
    width: 500px;
   background: white;
@@ -74,6 +81,15 @@ body {
 //         border-radius: 6px;
 //     }
 // }
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; // 👈 spreads left & right
+  padding: 12px 20px;
+  background: #1e3a8a;
+  color: white;
+}
 
 .document-section {
     display: flex;

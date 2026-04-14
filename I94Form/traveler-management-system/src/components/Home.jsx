@@ -15,7 +15,7 @@ const Home = () => {
                 onClick={() => navigate("/traveler")}
                 title="Go to Traveler Form"
             >
-                add +
+                add 
             </button>
         </div>
     )

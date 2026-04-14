@@ -3,8 +3,10 @@ import createSagaMiddleware from 'redux-saga';
 import travelerReducer from './reducer';
 import travelerSaga from './saga';
 
+
 const rootReducer = combineReducers({
     travelerState: travelerReducer,
+
 });
 
 const sagaMiddleware = createSagaMiddleware();
