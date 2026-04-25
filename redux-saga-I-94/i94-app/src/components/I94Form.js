@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createI94Request } from '../store/i94/actions';
+import { createI94Request } from '../i94/actions';
 
 const I94Form = () => {
   const dispatch = useDispatch();

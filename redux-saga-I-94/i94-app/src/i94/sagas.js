@@ -1,25 +1,23 @@
-import {call,put,takeLatest} from 'redux-saga/effects';
-import {CREATE_I94_REQUEST} from './types';
+import { call, put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
+import { CREATE_I94_REQUEST } from './types';
 import { createI94Success, createI94Failure } from './actions';
 
-const API_URL = 'http://localhost:5000/api/i94';
+const API_BASE = 'http://localhost:8080/api/i94';
 
-function* createI94Saga(data) {
-    return axios.post(API_URL, data.payload);
+function createI94Api(data) {
+  return axios.post(API_BASE, data);
 }
 
 function* createI94Saga(action) {
-    try {
-        const response = yield call(axios.post, API_URL , action.payload);
-        yield put(createI94Success(response.data));
-    } catch (error) {
-        yield put(createI94Failure('Failed to create I-94. Please try again.'));
-    }
+  try {
+    const response = yield call(createI94Api, action.payload);
+    yield put(createI94Success(response.data));
+  } catch (err) {
+    yield put(createI94Failure(err.message || 'Error creating I-94'));
+  }
 }
 
-function* i94Saga() {
-    yield takeLatest(CREATE_I94_REQUEST, createI94Saga);
+export default function* i94RootSaga() {
+  yield takeLatest(CREATE_I94_REQUEST, createI94Saga);
 }
-
-export default i94Saga;

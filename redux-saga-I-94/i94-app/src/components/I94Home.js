@@ -5,7 +5,7 @@ const I94Home = () => {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate('/i94');
+        navigate('/new-i94');
     };
 
     return (
