@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { saveI94Request, loadPreviousAddress } from '../redux/actions/I94Actions';
 
 export default function NewI94() {
@@ -13,16 +13,19 @@ export default function NewI94() {
     zip: ''
   });
 
+  useEffect(() => {
+    if (previousAddress) {
+      setForm(previousAddress);
+      console.log('Previous address loaded:', previousAddress);
+    }
+  }, [previousAddress]);
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const handleUsePrevious = () => {
     dispatch(loadPreviousAddress());
-    if (previousAddress) {
-      setForm(previousAddress);
-      console.log('Previous address loaded:', previousAddress);
-    }
   };
 
   const handleSubmit = () => {
