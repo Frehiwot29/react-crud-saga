@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import PetGrid from './PetGrid';
 import PetFilters from './PetFilters';
 import Pagination from './Pagination';
-import RequestModal from './RequestModal';
+import RequestModal from './RequestModel';
 
 const BuyerDashboard = () => {
   const dispatch = useDispatch();

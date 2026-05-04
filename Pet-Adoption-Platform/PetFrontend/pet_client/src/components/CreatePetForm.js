@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { FaUpload, FaSave } from 'react-icons/fa';
-import '../styles/components/Form.scss';
+import './Form.scss';
 
 const CreatePetForm = () => {
   const dispatch = useDispatch();

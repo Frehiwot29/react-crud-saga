@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaSearch, FaRedoAlt, FaFilter } from 'react-icons/fa';
-import '../styles/components/Filters.scss';
+import './Filters.scss';
 
 const PetFilters = () => {
   const dispatch = useDispatch();

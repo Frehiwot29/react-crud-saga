@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaCheck, FaTimes, FaPhone, FaEnvelope } from 'react-icons/fa';
-import '../styles/components/RequestsPanel.scss';
+import '../styles/RequestsPanel.scss';
 
 const RequestsPanel = () => {
   const dispatch = useDispatch();

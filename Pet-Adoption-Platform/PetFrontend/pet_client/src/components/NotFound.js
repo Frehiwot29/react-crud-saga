@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaHome, FaSearch, FaPaw } from 'react-icons/fa';
-import '../styles/components/NotFound.scss';
+import '../styles/NotFound.scss';
 
 const NotFound = () => {
     return (

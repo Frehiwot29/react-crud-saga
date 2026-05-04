@@ -1,6 +1,6 @@
 // components/PetGrid.js
 import React from 'react';
-import PetCard from './PetCard';
+import PetCard from './PatCard';
 
 const PetGrid = ({ pets, onRequest }) => {
   if (pets.length === 0) {

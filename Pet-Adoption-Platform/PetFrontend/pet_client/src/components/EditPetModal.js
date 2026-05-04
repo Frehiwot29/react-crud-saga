@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Modal from 'react-modal';
 import { FaTimes, FaSave } from 'react-icons/fa';
-import '../styles/components/Modal.scss';
+import '../styles/Modal.scss';
 
 const EditPetModal = ({ isOpen, onClose, pet }) => {
   const dispatch = useDispatch();

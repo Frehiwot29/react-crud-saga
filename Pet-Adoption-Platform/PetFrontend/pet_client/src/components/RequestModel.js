@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Modal from 'react-modal';
 import { FaTimes, FaPaperPlane } from 'react-icons/fa';
-import '../styles/components/Modal.scss';
+import '../styles/Modal.scss';
 
 // Bind modal to your app element (for accessibility)
 if (process.env.NODE_ENV !== 'test') {

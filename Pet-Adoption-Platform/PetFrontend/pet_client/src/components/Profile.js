@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaEdit, FaSave, FaTimes, FaPaw, FaUsers } from 'react-icons/fa';
-import '../styles/components/Profile.scss';
+import '../styles/Profile.scss';
 
 const Profile = () => {
   const dispatch = useDispatch();

@@ -1,7 +1,7 @@
 // src/components/Pagination.js
 import React from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import '../styles/components/Pagination.scss';
+import '../styles/Pagination.scss';
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const maxVisiblePages = 5;

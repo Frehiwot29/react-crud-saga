@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { FaUser, FaBars, FaTimes, FaSignOutAlt, FaUserCircle, FaPaw, FaHome, FaList, FaPlusCircle } from 'react-icons/fa';
+import './Navbar.scss';
 
 const Navbar = () => {
   const { user, isAuthenticated, logout, isBreeder } = useAuth();

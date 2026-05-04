@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { FaEdit, FaTrash, FaToggleOn, FaToggleOff } from 'react-icons/fa';
 import EditPetModal from './EditPetModal';
-import '../styles/components/PetManagementCard.scss';
+import '../styles/PetManagementCard.scss';
 
 const PetManagementCard = ({ pet, onDelete, onToggleStatus }) => {
   const dispatch = useDispatch();

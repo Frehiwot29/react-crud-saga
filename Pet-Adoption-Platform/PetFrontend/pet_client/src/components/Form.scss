@@ -1,0 +1,271 @@
+// src/styles/components/Form.scss
+@import '../styles/variables.scss';
+@import '../styles/mixins.scss';
+
+.auth-container {
+  min-height: calc(100vh - 200px);
+  @include flex-center;
+  padding: $spacing-2xl $spacing-lg;
+  background: linear-gradient(135deg, $gray-50 0%, $white 100%);
+}
+
+.auth-card {
+  background: $white;
+  border-radius: 1rem;
+  box-shadow: $shadow-xl;
+  padding: $spacing-2xl;
+  width: 100%;
+  max-width: 480px;
+  @include fade-in;
+  
+  &-large {
+    max-width: 800px;
+  }
+  
+  @include responsive(sm) {
+    padding: $spacing-xl;
+    max-width: 90%;
+  }
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: $spacing-xl;
+  
+  h2 {
+    font-size: $font-size-2xl;
+    color: $gray-800;
+    margin-bottom: $spacing-sm;
+    font-weight: 700;
+  }
+  
+  p {
+    color: $gray-600;
+    font-size: $font-size-sm;
+  }
+}
+
+.auth-form {
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-md;
+    margin-bottom: $spacing-md;
+    
+    @include responsive(sm) {
+      grid-template-columns: 1fr;
+      gap: $spacing-sm;
+    }
+  }
+  
+  .form-group {
+    margin-bottom: $spacing-lg;
+    
+    label {
+      display: block;
+      margin-bottom: $spacing-sm;
+      color: $gray-700;
+      font-weight: 500;
+      font-size: $font-size-sm;
+      
+      .input-icon {
+        margin-right: $spacing-xs;
+        color: $primary-color;
+      }
+    }
+    
+    input, select, textarea {
+      width: 100%;
+      padding: $spacing-sm $spacing-md;
+      border: 2px solid $gray-200;
+      border-radius: 0.5rem;
+      font-size: $font-size-base;
+      transition: all $transition-fast;
+      
+      &:focus {
+        outline: none;
+        border-color: $primary-color;
+        box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
+      }
+      
+      &.error {
+        border-color: $danger-color;
+        
+        &:focus {
+          box-shadow: 0 0 0 3px rgba($danger-color, 0.1);
+        }
+      }
+      
+      &:disabled {
+        background-color: $gray-100;
+        cursor: not-allowed;
+      }
+    }
+    
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    
+    .error-message {
+      display: block;
+      margin-top: $spacing-xs;
+      color: $danger-color;
+      font-size: $font-size-xs;
+    }
+  }
+}
+
+.role-selector {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-md;
+  margin-top: $spacing-sm;
+  
+  @include responsive(sm) {
+    grid-template-columns: 1fr;
+  }
+  
+  .role-option {
+    position: relative;
+    cursor: pointer;
+    
+    input {
+      position: absolute;
+      opacity: 0;
+      
+      &:checked + .role-content {
+        border-color: $primary-color;
+        background: linear-gradient(135deg, rgba($primary-color, 0.05), rgba($info-color, 0.05));
+        
+        &::before {
+          content: '✓';
+          position: absolute;
+          top: $spacing-sm;
+          right: $spacing-sm;
+          color: $primary-color;
+          font-weight: bold;
+        }
+      }
+    }
+    
+    .role-content {
+      padding: $spacing-md;
+      border: 2px solid $gray-200;
+      border-radius: 0.5rem;
+      text-align: center;
+      transition: all $transition-fast;
+      
+      svg {
+        font-size: $font-size-2xl;
+        color: $primary-color;
+        margin-bottom: $spacing-sm;
+      }
+      
+      strong {
+        display: block;
+        margin-bottom: $spacing-xs;
+        color: $gray-800;
+      }
+      
+      small {
+        font-size: $font-size-xs;
+        color: $gray-500;
+      }
+      
+      &:hover {
+        border-color: $primary-color;
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
+
+.form-options {
+  @include flex-between;
+  margin-bottom: $spacing-lg;
+  
+  .checkbox-label {
+    @include flex-center;
+    gap: $spacing-xs;
+    color: $gray-600;
+    font-size: $font-size-sm;
+    cursor: pointer;
+    
+    input {
+      cursor: pointer;
+    }
+  }
+  
+  .forgot-link {
+    color: $primary-color;
+    text-decoration: none;
+    font-size: $font-size-sm;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.btn-primary, .btn-secondary {
+  @include button-base;
+  
+  svg {
+    margin-right: $spacing-xs;
+  }
+}
+
+.btn-primary {
+  @include button-variant($primary-color);
+}
+
+.btn-secondary {
+  @include button-variant($gray-600);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.alert {
+  padding: $spacing-md;
+  border-radius: 0.5rem;
+  margin-bottom: $spacing-lg;
+  
+  &-error {
+    background-color: rgba($danger-color, 0.1);
+    color: $danger-color;
+    border-left: 4px solid $danger-color;
+  }
+  
+  &-success {
+    background-color: rgba($success-color, 0.1);
+    color: $success-color;
+    border-left: 4px solid $success-color;
+  }
+}
+
+.spinner {
+  @include loading-spinner(16px);
+  display: inline-block;
+  margin-right: $spacing-sm;
+}
+
+.auth-footer {
+  text-align: center;
+  margin-top: $spacing-xl;
+  padding-top: $spacing-lg;
+  border-top: 1px solid $gray-200;
+  color: $gray-600;
+  
+  a {
+    color: $primary-color;
+    text-decoration: none;
+    font-weight: 500;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
