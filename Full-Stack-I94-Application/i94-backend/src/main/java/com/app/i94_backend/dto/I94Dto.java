@@ -1,0 +1,11 @@
+package com.app.i94_backend.dto;
+
+import lombok.Data;
+
+@Data
+public class I94Dto {
+    private String street;
+    private String city;
+    private String state;
+    private String zip;
+}

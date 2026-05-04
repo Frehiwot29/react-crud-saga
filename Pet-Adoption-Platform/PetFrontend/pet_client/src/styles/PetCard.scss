@@ -1,0 +1,100 @@
+// styles/components/PetCard.scss
+@import './variables';
+@import './mixins';
+
+.pet-card {
+  @include card;
+  position: relative;
+  
+  &__image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform $transition-base;
+    }
+    
+    &:hover img {
+      transform: scale(1.05);
+    }
+  }
+  
+  &__badge {
+    position: absolute;
+    top: $spacing-sm;
+    right: $spacing-sm;
+    padding: $spacing-xs $spacing-sm;
+    border-radius: 9999px;
+    font-size: $font-size-xs;
+    font-weight: 600;
+    z-index: $z-base;
+    
+    &--adopted {
+      background-color: $danger-color;
+      color: $white;
+    }
+    
+    &--requests {
+      left: $spacing-sm;
+      right: auto;
+      background-color: $primary-color;
+      color: $white;
+      @include flex-center;
+      gap: $spacing-xs;
+    }
+  }
+  
+  &__content {
+    padding: $spacing-md;
+  }
+  
+  &__title {
+    font-size: $font-size-xl;
+    font-weight: 600;
+    margin-bottom: $spacing-sm;
+    color: $gray-800;
+  }
+  
+  &__details {
+    margin-bottom: $spacing-md;
+    color: $gray-600;
+    
+    p {
+      margin: $spacing-xs 0;
+      font-size: $font-size-sm;
+      
+      strong {
+        color: $gray-700;
+        font-weight: 600;
+      }
+    }
+  }
+  
+  &__description {
+    color: $gray-700;
+    margin-bottom: $spacing-md;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: $font-size-sm;
+  }
+  
+  &__button {
+    @include button-base;
+    width: 100%;
+    
+    &--available {
+      @include button-variant($primary-color);
+    }
+    
+    &--adopted {
+      @include button-variant($gray-400);
+    }
+  }
+}

@@ -1,0 +1,145 @@
+// styles/components/Dashboard.scss
+@import './variables';
+@import './mixins';
+
+.dashboard {
+  min-height: 100vh;
+  background: linear-gradient(135deg, $gray-50 0%, $white 100%);
+  
+  &__header {
+    background: linear-gradient(135deg, $primary-color, $info-color);
+    color: $white;
+    padding: $spacing-3xl 0;
+    
+    h1 {
+      font-size: $font-size-3xl;
+      font-weight: bold;
+      text-align: center;
+      
+      @include responsive(md) {
+        font-size: $font-size-4xl;
+      }
+    }
+  }
+  
+  &__container {
+    max-width: 1280px;
+    margin: -$spacing-2xl auto 0;
+    padding: $spacing-lg;
+    position: relative;
+    
+    @include responsive(md) {
+      padding: $spacing-xl;
+    }
+  }
+  
+  &__filters {
+    background-color: $white;
+    padding: $spacing-lg;
+    border-radius: 0.5rem;
+    box-shadow: $shadow-lg;
+    margin-bottom: $spacing-xl;
+    
+    h2 {
+      font-size: $font-size-lg;
+      font-weight: 600;
+      margin-bottom: $spacing-md;
+      color: $gray-800;
+    }
+    
+    &-form {
+      display: grid;
+      gap: $spacing-md;
+      
+      @include responsive(md) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    &-group {
+      @include flex-column;
+      gap: $spacing-xs;
+      
+      label {
+        font-size: $font-size-sm;
+        font-weight: 500;
+        color: $gray-700;
+      }
+      
+      input, select {
+        padding: $spacing-sm $spacing-md;
+        border: 1px solid $gray-300;
+        border-radius: 0.375rem;
+        transition: border-color $transition-fast;
+        
+        &:focus {
+          outline: none;
+          border-color: $primary-color;
+          box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
+        }
+      }
+    }
+  }
+  
+  &__grid {
+    @include grid-responsive(280px);
+    gap: $spacing-xl;
+  }
+  
+  &__loading {
+    @include flex-center;
+    min-height: 400px;
+    
+    &-spinner {
+      @include loading-spinner;
+    }
+  }
+  
+  &__empty {
+    text-align: center;
+    padding: $spacing-3xl;
+    color: $gray-500;
+    
+    svg {
+      font-size: 4rem;
+      margin-bottom: $spacing-md;
+    }
+    
+    p {
+      font-size: $font-size-lg;
+    }
+  }
+}
+
+.pagination {
+  @include flex-center;
+  gap: $spacing-sm;
+  margin-top: $spacing-2xl;
+  
+  &__button {
+    @include button-base;
+    background-color: $white;
+    color: $gray-700;
+    border: 1px solid $gray-300;
+    padding: $spacing-xs $spacing-md;
+    
+    &:hover:not(:disabled) {
+      background-color: $gray-100;
+    }
+    
+    &--active {
+      background-color: $primary-color;
+      color: $white;
+      border-color: $primary-color;
+      
+      &:hover {
+        background-color: $primary-dark;
+      }
+    }
+    
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}

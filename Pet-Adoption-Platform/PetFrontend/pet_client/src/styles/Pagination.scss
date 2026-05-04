@@ -1,0 +1,73 @@
+// src/styles/components/Pagination.scss
+@import './variables';
+@import './mixins';
+
+.pagination {
+  @include flex-center;
+  gap: $spacing-sm;
+  margin-top: $spacing-2xl;
+  padding: $spacing-md;
+  flex-wrap: wrap;
+  
+  &-nav {
+    @include button-base;
+    background-color: $white;
+    color: $gray-700;
+    border: 1px solid $gray-300;
+    padding: $spacing-sm $spacing-md;
+    gap: $spacing-xs;
+    
+    &:hover:not(:disabled) {
+      background-color: $gray-100;
+      border-color: $primary-color;
+      transform: translateY(-1px);
+    }
+    
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+  
+  &-pages {
+    @include flex-center;
+    gap: $spacing-xs;
+    flex-wrap: wrap;
+  }
+  
+  &-page {
+    @include button-base;
+    background-color: $white;
+    color: $gray-700;
+    border: 1px solid $gray-300;
+    padding: $spacing-sm $spacing-md;
+    min-width: 40px;
+    
+    &:hover:not(.active) {
+      background-color: $gray-100;
+      border-color: $primary-color;
+      transform: translateY(-1px);
+    }
+    
+    &.active {
+      background: linear-gradient(135deg, $primary-color, $info-color);
+      color: $white;
+      border-color: $primary-color;
+      
+      &:hover {
+        transform: translateY(-1px);
+        box-shadow: $shadow-md;
+      }
+    }
+  }
+  
+  @include responsive(sm) {
+    gap: $spacing-xs;
+    
+    &-nav, &-page {
+      padding: $spacing-xs $spacing-sm;
+      font-size: $font-size-sm;
+      min-width: 32px;
+    }
+  }
+}

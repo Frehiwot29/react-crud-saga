@@ -1,0 +1,135 @@
+// src/styles/components/Filters.scss
+@import '../styles/variables.scss';
+@import '../styles/mixins.scss';
+
+.filters-container {
+  background: $white;
+  border-radius: 0.5rem;
+  margin-bottom: $spacing-xl;
+  box-shadow: $shadow-sm;
+  
+  .filters-header {
+    padding: $spacing-md;
+    border-bottom: 1px solid $gray-200;
+  }
+  
+  .filters-toggle {
+    @include button-base;
+    background: none;
+    color: $primary-color;
+    gap: $spacing-sm;
+    padding: 0;
+    
+    &:hover {
+      color: $primary-dark;
+    }
+  }
+  
+  .filters-form {
+    padding: $spacing-lg;
+    border-bottom: 1px solid $gray-200;
+    @include fade-in;
+  }
+  
+  .filters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: $spacing-lg;
+    margin-bottom: $spacing-lg;
+    
+    @include responsive(sm) {
+      grid-template-columns: 1fr;
+      gap: $spacing-md;
+    }
+  }
+  
+  .filter-group {
+    label {
+      display: block;
+      margin-bottom: $spacing-sm;
+      color: $gray-700;
+      font-weight: 500;
+      font-size: $font-size-sm;
+    }
+    
+    .filter-input,
+    .filter-select {
+      width: 100%;
+      padding: $spacing-sm $spacing-md;
+      border: 2px solid $gray-200;
+      border-radius: 0.5rem;
+      font-size: $font-size-base;
+      transition: all $transition-fast;
+      
+      &:focus {
+        outline: none;
+        border-color: $primary-color;
+        box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
+      }
+    }
+  }
+  
+  .filters-actions {
+    @include flex-center;
+    gap: $spacing-md;
+    
+    .btn-apply,
+    .btn-reset {
+      @include button-base;
+      padding: $spacing-sm $spacing-xl;
+      
+      svg {
+        margin-right: $spacing-xs;
+      }
+    }
+    
+    .btn-apply {
+      @include button-variant($primary-color);
+    }
+    
+    .btn-reset {
+      @include button-variant($gray-300, $gray-700);
+    }
+  }
+  
+  .active-filters {
+    padding: $spacing-md;
+    background: $gray-50;
+    border-radius: 0 0 0.5rem 0.5rem;
+    @include flex-wrap;
+    align-items: center;
+    gap: $spacing-sm;
+    
+    &-label {
+      font-size: $font-size-sm;
+      color: $gray-600;
+      font-weight: 500;
+    }
+    
+    .filter-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: $spacing-xs;
+      padding: $spacing-xs $spacing-sm;
+      background: $white;
+      border: 1px solid $gray-300;
+      border-radius: 1.5rem;
+      font-size: $font-size-sm;
+      color: $gray-700;
+      
+      button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: $gray-500;
+        font-size: $font-size-lg;
+        line-height: 1;
+        padding: 0 $spacing-xs;
+        
+        &:hover {
+          color: $danger-color;
+        }
+      }
+    }
+  }
+}

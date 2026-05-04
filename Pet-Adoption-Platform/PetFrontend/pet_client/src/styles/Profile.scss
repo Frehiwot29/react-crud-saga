@@ -1,0 +1,206 @@
+// src/styles/components/Profile.scss
+@import './variables';
+@import './mixins';
+
+.profile-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: $spacing-2xl $spacing-lg;
+  
+  @include responsive(sm) {
+    padding: $spacing-xl $spacing-md;
+  }
+}
+
+.profile-header {
+  @include flex-center;
+  gap: $spacing-xl;
+  margin-bottom: $spacing-2xl;
+  padding: $spacing-2xl;
+  background: linear-gradient(135deg, $primary-color, $info-color);
+  border-radius: 1rem;
+  color: $white;
+  box-shadow: $shadow-lg;
+  
+  @include responsive(sm) {
+    flex-direction: column;
+    text-align: center;
+    gap: $spacing-md;
+    padding: $spacing-xl;
+  }
+  
+  .profile-avatar {
+    .avatar-placeholder {
+      width: 120px;
+      height: 120px;
+      background: rgba($white, 0.2);
+      border-radius: 50%;
+      @include flex-center;
+      font-size: 3rem;
+      font-weight: bold;
+      border: 3px solid $white;
+      box-shadow: $shadow-lg;
+      
+      @include responsive(sm) {
+        width: 100px;
+        height: 100px;
+        font-size: 2.5rem;
+      }
+    }
+  }
+  
+  .profile-title {
+    h1 {
+      font-size: $font-size-3xl;
+      margin-bottom: $spacing-sm;
+      
+      @include responsive(sm) {
+        font-size: $font-size-2xl;
+      }
+    }
+    
+    .role-badge {
+      display: inline-block;
+      padding: $spacing-xs $spacing-md;
+      background: rgba($white, 0.2);
+      border-radius: 1rem;
+      font-size: $font-size-sm;
+    }
+  }
+}
+
+.profile-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: $spacing-xl;
+  
+  @include responsive(md) {
+    grid-template-columns: 1fr;
+    gap: $spacing-lg;
+  }
+}
+
+.profile-main {
+  .profile-card {
+    background: $white;
+    border-radius: 1rem;
+    padding: $spacing-xl;
+    box-shadow: $shadow-md;
+    
+    .card-header {
+      @include flex-between;
+      margin-bottom: $spacing-xl;
+      padding-bottom: $spacing-md;
+      border-bottom: 2px solid $gray-200;
+      
+      h2 {
+        font-size: $font-size-xl;
+        color: $gray-800;
+      }
+      
+      .btn-edit {
+        @include button-base;
+        @include button-variant($gray-100, $gray-700);
+        
+        svg {
+          margin-right: $spacing-xs;
+        }
+      }
+    }
+    
+    .profile-info {
+      .info-row {
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        padding: $spacing-md 0;
+        border-bottom: 1px solid $gray-100;
+        
+        @include responsive(sm) {
+          grid-template-columns: 1fr;
+          gap: $spacing-xs;
+        }
+        
+        .info-label {
+          font-weight: 600;
+          color: $gray-700;
+          @include flex-center;
+          gap: $spacing-sm;
+          
+          .info-icon {
+            color: $primary-color;
+          }
+        }
+        
+        .info-value {
+          color: $gray-600;
+        }
+      }
+    }
+    
+    .profile-form {
+      .form-group {
+        margin-bottom: $spacing-lg;
+        
+        label {
+          display: block;
+          margin-bottom: $spacing-sm;
+          font-weight: 500;
+          color: $gray-700;
+        }
+        
+        input, textarea {
+          width: 100%;
+          padding: $spacing-sm $spacing-md;
+          border: 2px solid $gray-200;
+          border-radius: 0.5rem;
+          
+          &:focus {
+            border-color: $primary-color;
+            outline: none;
+          }
+        }
+      }
+      
+      .btn-save {
+        @include button-base;
+        @include button-variant($primary-color);
+        width: 100%;
+      }
+    }
+  }
+}
+
+.profile-sidebar {
+  .stats-card {
+    background: $white;
+    border-radius: 1rem;
+    padding: $spacing-xl;
+    box-shadow: $shadow-md;
+    margin-bottom: $spacing-lg;
+    
+    h3 {
+      font-size: $font-size-lg;
+      color: $gray-800;
+      margin-bottom: $spacing-lg;
+      padding-bottom: $spacing-sm;
+      border-bottom: 2px solid $gray-200;
+    }
+    
+    .stat-item {
+      @include flex-center;
+      justify-content: space-between;
+      padding: $spacing-md 0;
+      
+      .stat-value {
+        font-size: $font-size-2xl;
+        font-weight: bold;
+        color: $primary-color;
+      }
+      
+      .stat-label {
+        color: $gray-600;
+        font-size: $font-size-sm;
+      }
+    }
+  }
+}

@@ -1,0 +1,279 @@
+// src/styles/components/NotFound.scss
+@import './variables';
+@import './mixins';
+
+.not-found-container {
+  min-height: calc(100vh - 200px);
+  @include flex-center;
+  padding: $spacing-3xl $spacing-lg;
+  background: linear-gradient(135deg, $gray-50 0%, $white 100%);
+  
+  @include responsive(sm) {
+    padding: $spacing-2xl $spacing-md;
+  }
+}
+
+.not-found-content {
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+  @include fade-in;
+  
+  @include responsive(sm) {
+    max-width: 90%;
+  }
+}
+
+.error-code {
+  @include flex-center;
+  gap: $spacing-md;
+  font-size: 8rem;
+  font-weight: bold;
+  margin-bottom: $spacing-xl;
+  color: $gray-800;
+  
+  @include responsive(sm) {
+    font-size: 5rem;
+    gap: $spacing-sm;
+  }
+  
+  .digit {
+    background: linear-gradient(135deg, $primary-color, $info-color);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: $shadow-lg;
+  }
+  
+  .paw-icon {
+    font-size: 6rem;
+    color: $primary-color;
+    animation: bounce 2s ease-in-out infinite;
+    
+    @include responsive(sm) {
+      font-size: 4rem;
+    }
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+h1 {
+  font-size: $font-size-3xl;
+  color: $gray-800;
+  margin-bottom: $spacing-lg;
+  font-weight: 700;
+  
+  @include responsive(sm) {
+    font-size: $font-size-2xl;
+  }
+}
+
+p {
+  font-size: $font-size-lg;
+  color: $gray-600;
+  margin-bottom: $spacing-md;
+  line-height: 1.6;
+  
+  @include responsive(sm) {
+    font-size: $font-size-base;
+  }
+}
+
+.action-buttons {
+  @include flex-center;
+  gap: $spacing-md;
+  margin: $spacing-2xl 0;
+  
+  @include responsive(sm) {
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+  
+  .btn-primary, .btn-secondary {
+    @include button-base;
+    padding: $spacing-md $spacing-xl;
+    font-size: $font-size-base;
+    min-width: 180px;
+    
+    @include responsive(sm) {
+      width: 100%;
+      min-width: auto;
+    }
+  }
+  
+  .btn-primary {
+    @include button-variant($primary-color);
+  }
+  
+  .btn-secondary {
+    @include button-variant($gray-600);
+    
+    &:hover {
+      background-color: $gray-700;
+    }
+  }
+}
+
+.suggestions {
+  margin-top: $spacing-2xl;
+  padding: $spacing-xl;
+  background: $white;
+  border-radius: 1rem;
+  box-shadow: $shadow-md;
+  text-align: left;
+  
+  h3 {
+    font-size: $font-size-lg;
+    color: $gray-800;
+    margin-bottom: $spacing-md;
+    font-weight: 600;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    
+    li {
+      padding: $spacing-sm 0;
+      color: $gray-600;
+      @include flex-center;
+      justify-content: flex-start;
+      gap: $spacing-sm;
+      
+      &::before {
+        content: '•';
+        color: $primary-color;
+        font-weight: bold;
+        font-size: $font-size-xl;
+      }
+      
+      a {
+        color: $primary-color;
+        text-decoration: none;
+        font-weight: 500;
+        
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+// Animation for suggestion cards
+.suggestions {
+  animation: slideUp $transition-slow;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Decorative elements
+.not-found-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle at 20% 80%, rgba($primary-color, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: $z-negative;
+}
+
+.not-found-container::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle at 80% 20%, rgba($info-color, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: $z-negative;
+}
+
+// Hover effects for buttons
+.btn-primary, .btn-secondary {
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba($white, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+  
+  &:active::before {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+// Responsive adjustments
+@include responsive(md) {
+  .error-code {
+    font-size: 6rem;
+    
+    .paw-icon {
+      font-size: 5rem;
+    }
+  }
+  
+  .suggestions {
+    padding: $spacing-lg;
+    margin-top: $spacing-xl;
+  }
+}
+
+@include responsive(sm) {
+  .action-buttons {
+    .btn-primary, .btn-secondary {
+      padding: $spacing-sm $spacing-lg;
+    }
+  }
+  
+  .suggestions ul li {
+    font-size: $font-size-sm;
+  }
+}
+
+// Print styles
+@media print {
+  .not-found-container {
+    background: white;
+    padding: 0;
+  }
+  
+  .action-buttons,
+  .suggestions {
+    display: none;
+  }
+  
+  .error-code {
+    color: black;
+  }
+}
