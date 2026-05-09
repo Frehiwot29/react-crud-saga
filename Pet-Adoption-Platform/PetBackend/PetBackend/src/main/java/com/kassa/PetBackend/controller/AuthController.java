@@ -21,7 +21,7 @@ public class AuthController {
     private UserRepository userRepository;
     
     @Autowired
-    private JwtUtil jwtUtil;
+     private JwtUtil jwtUtil;
     
     private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     
